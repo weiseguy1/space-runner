@@ -8,10 +8,10 @@ This is a game that was made by following along with Clear Code's [tutorial](htt
 
 ## Install
 
-'''
+```
 git clone https://git.weiseguy.com/Weiseguy/Runner.py.git
 cd Runner.py
 pip install -r requirements.txt
 python game.py
-'''
+```
 
