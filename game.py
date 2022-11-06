@@ -48,15 +48,15 @@ class Obstacle(pygame.sprite.Sprite):
     def __init__(self, type):
         super().__init__()
 
-        if type == 'fly':
-            fly_1 = pygame.image.load('graphics/fly/fly1.png').convert_alpha()
-            fly_2 = pygame.image.load('graphics/fly/fly2.png').convert_alpha()
-            self.frames = [fly_1, fly_2]
+        if type == 'flyer':
+            flyer_1 = pygame.image.load('graphics/flyer/flyer1.png').convert_alpha()
+            flyer_2 = pygame.image.load('graphics/flyer/flyer2.png').convert_alpha()
+            self.frames = [flyer_1, flyer_2]
             y_pos = 210
         else:
-            snail_1 = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
-            snail_2 = pygame.image.load('graphics/snail/snail2.png').convert_alpha()
-            self.frames = [snail_1, snail_2]
+            crawler_1 = pygame.image.load('graphics/crawler/crawler1.png').convert_alpha()
+            crawler_2 = pygame.image.load('graphics/crawler/crawler2.png').convert_alpha()
+            self.frames = [crawler_1, crawler_2]
             y_pos = 300
 
         self.animation_index = 0
@@ -79,7 +79,7 @@ class Obstacle(pygame.sprite.Sprite):
 
 def display_score():
     current_time = int(pygame.time.get_ticks() / 1000) - start_time
-    score_surf = text_font.render(f'Score: {current_time}',False,(64,64,64))
+    score_surf = text_font.render(f'Score: {current_time}',False,(220,220,220))
     score_rect = score_surf.get_rect(center = (400,50))
     screen.blit(score_surf,score_rect)
     return current_time
@@ -95,14 +95,14 @@ def collision_sprite():
 
 pygame.init()
 screen = pygame.display.set_mode((800,400))
-pygame.display.set_caption('Runner')
+pygame.display.set_caption('Space Runner')
 clock = pygame.time.Clock()
 text_font = pygame.font.Font('font/Pixeltype.ttf', 50)
 game_active = False
 start_time = 0
 score = 0
 bg_music = pygame.mixer.Sound('audio/music.wav')
-bg_music.set_volume(0.4)
+bg_music.set_volume(0.0)
 bg_music.play(loops = -1)
 
 # Groups
@@ -119,7 +119,7 @@ player_stand = pygame.image.load('graphics/player/player_stand.png').convert_alp
 player_stand = pygame.transform.rotozoom(player_stand,0,2)
 player_stand_rect = player_stand.get_rect(center = (400, 200))
 
-game_name = text_font.render('Pixel Runner',False,(111,196,169))
+game_name = text_font.render('Space Runner',False,(111,196,169))
 game_name_rect = game_name.get_rect(center = (400,80))
 
 game_message = text_font.render('Press space to run',False,(111,196,169))
@@ -137,7 +137,7 @@ while True:
 
         if game_active:
             if event.type == obstacle_timer:
-                obstacle_group.add(Obstacle(choice(['fly', 'fly', 'fly', 'snail'])))
+                obstacle_group.add(Obstacle(choice(['flyer', 'flyer', 'crawler', 'crawler'])))
 
         else:
             if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
