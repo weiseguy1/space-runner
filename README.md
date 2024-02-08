@@ -13,14 +13,12 @@ notes in the form of comments on how to work with basic logic in Python
 
 as well as how to work with external libraries. 
 
-The original code made by Clear Code can be found [here](https://github.com/clear-code-projects/UltimatePygameIntro).
-
 
 ## Install
 
 ```
-git clone https://git.weiseguy.com/Weiseguy/SpaceRunner.git
-cd SpaceRunner
+git clone https://git.weiseguy.com/weiseguy1/space-runner.git
+cd space-runner 
 pip install -r requirements.txt
 python game.py
 ```
